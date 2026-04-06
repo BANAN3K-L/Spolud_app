@@ -1,10 +1,10 @@
 @font-face{
     font-family: "Kamikaze";
-    src: url("/font/asia.ttf");
+    src: url("../font/asia.ttf");
 }
 @font-face{
     font-family: "Kamikaze3D";
-    src: url("/font/asia3d.ttf");
+    src: url("../font/asia3d.ttf");
 }
 
 html{
