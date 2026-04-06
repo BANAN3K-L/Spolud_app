@@ -204,7 +204,7 @@ header{
 #us-img{
     position: fixed;
     bottom: -200px;
-    filter: opacity(.2);
+    filter: opacity(.3);
     z-index: -1;
     width: 400px;
 
