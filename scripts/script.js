@@ -71,7 +71,8 @@ function pocet_dni_v_mesici(rok, mesic){
 }
 
 function vyroci(){
-    const VYROCI = document.getElementById("vyroci-text-edit");
+    const VYROCI_M = document.getElementById("vyroci-mesic");
+    const VYROCI_D = document.getElementById("vyroci-den");
 
     let rok = new Date().getFullYear();
 
@@ -83,91 +84,18 @@ function vyroci(){
         dny += pocet_dni_v_mesici(rok, POCET_MESICU);
     }
 
-    VYROCI.innerText = `💖 Výročí za ${mesice} měsíců a ${dny} dní 🌷`;
+    if (mesice < 10){
+        mesice = "0" + mesice;
+    }
+
+    if (dny < 10){
+        dny = "0" + dny;
+    }
+    VYROCI_M.innerText = mesice;
+    VYROCI_D.innerText = dny;
 }
 
 
-function narozeiny_ondra(){
-    const mesic_ondra = document.getElementById("bday-month-ondra");
-    const den_ondra = document.getElementById("bday-day-ondra");
-
-    const NAROZENINY_MESIC = 12;
-    const NAROZENINY_DEN = 8;
-
-
-    const dnes = new Date();
-    let rokNar = dnes.getFullYear();
-
-    let narozeniny = new Date(rokNar, NAROZENINY_MESIC - 1, NAROZENINY_DEN);
-
-    if (narozeniny < dnes){
-        rokNar += 1;
-        narozeniny = new Date(rokNar, NAROZENINY_MESIC - 1, NAROZENINY_DEN);
-    }
-
-    let mesice = 0;
-    let temp = new Date(dnes);
-    
-    while (true){
-        let dalsi_mesic = new Date(temp);
-        dalsi_mesic.setMonth(dalsi_mesic.getMonth() + 1);
-
-        if (dalsi_mesic <= narozeniny){
-            temp = dalsi_mesic;
-            mesice++;
-        }
-        else{
-            break;
-        }
-    }
-
-    const dny = Math.floor((narozeniny - temp) / (1000 * 60 * 60 * 24));
-
-    mesic_ondra.innerText = pad(mesice);
-    den_ondra.innerText = pad(dny);
-
-}
-
-function narozeniny_kate(){
-    const mesic_kate = document.getElementById("bday-month-kate");
-    const den_kate = document.getElementById("bday-day-kate");
-
-    const NAROZENINY_MESIC = 1;
-    const NAROZENINY_DEN = 23;
-
-    const dnes = new Date();
-    let rokNar = dnes.getFullYear();
-
-    let narozeniny = new Date(rokNar, NAROZENINY_MESIC - 1, NAROZENINY_DEN);
-
-    if (narozeniny < dnes){
-        rokNar += 1;
-        narozeniny = new Date(rokNar, NAROZENINY_MESIC - 1, NAROZENINY_DEN);
-    }
-
-    let mesice = 0;
-    let temp = new Date(dnes);
-    
-    while (true){
-        let dalsi_mesic = new Date(temp);
-        dalsi_mesic.setMonth(dalsi_mesic.getMonth() + 1);
-
-        if (dalsi_mesic <= narozeniny){
-            temp = dalsi_mesic;
-            mesice++;
-        }
-        else{
-            break;
-        }
-    }
-
-    const dny = Math.floor((narozeniny - temp) / (1000 * 60 * 60 * 24));
-
-    mesic_kate.innerText = pad(mesice);
-    den_kate.innerText = pad(dny);
-
-
-}
 
 
 function motivace(){
@@ -207,7 +135,7 @@ function motivace(){
     ];
 
     const nahodna_veta = motivace_vety[Math.floor(Math.random() * motivace_vety.length)];
-    MOTIVACE.innerText = nahodna_veta;
+    MOTIVACE.innerText = '"' + nahodna_veta + '"';
 }
 
 
@@ -220,8 +148,8 @@ setInterval(dlouho_spolu, 1000);
 vyroci();
 setInterval(vyroci, 600000);
 
-narozeiny_ondra();
-setInterval(narozeiny_ondra, 600000);
+// narozeiny_ondra();
+// setInterval(narozeiny_ondra, 600000);
 
-narozeniny_kate();
-setInterval(narozeniny_kate, 600000);
+// narozeniny_kate();
+// setInterval(narozeniny_kate, 600000);
